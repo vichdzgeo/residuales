@@ -1,11 +1,8 @@
 import dash
-from dash import dash_table
 from dash import dcc, html
-from matplotlib.pyplot import figimage
 import plotly.express as px
 import pandas as pd
 import numpy as np
-import plotly.io as pio
 import os
 def generate_table(dataframe):
     return html.Table([
@@ -26,6 +23,7 @@ def graph_residuales(residuales, campo_grupos='grupo'):
     return fig
 
 app = dash.Dash(__name__)
+server = app.server
 dirname = os.path.dirname(__file__)
 
 #residuales_e07 = pd.read_excel(os.path.join(dirname,"bd_residuales_esc/e07/bd_residuales_grupos_v1.xlsx"),engine='openpyxl')
