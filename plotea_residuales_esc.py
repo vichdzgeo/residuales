@@ -6,7 +6,7 @@ import plotly.express as px
 import pandas as pd
 import numpy as np
 import plotly.io as pio
-
+import os
 def generate_table(dataframe):
     return html.Table([
         html.Thead(
@@ -26,11 +26,12 @@ def graph_residuales(residuales, campo_grupos='grupo'):
     return fig
 
 app = dash.Dash(__name__)
+dirname = os.path.dirname(__file__)
 
-residuales_e07 = pd.read_excel("../bd_residuales/e07/bd_residuales_grupos_v1.xlsx",engine='openpyxl')
-residuales_e08 = pd.read_excel("../bd_residuales/e08/bd_residuales_grupos_v1.xlsx",engine='openpyxl')
-residuales_e09 = pd.read_excel("../bd_residuales/e09/bd_residuales_grupos_v1.xlsx",engine='openpyxl')
-residuales_e10 = pd.read_excel("../bd_residuales/e10/bd_residuales_grupos_v1.xlsx",engine='openpyxl')
+#residuales_e07 = pd.read_excel(os.path.join(dirname,"bd_residuales_esc/e07/bd_residuales_grupos_v1.xlsx"),engine='openpyxl')
+residuales_e08 = pd.read_excel(os.path.join(dirname,"bd_residuales_esc/e08/bd_residuales_grupos_v1.xlsx"),engine='openpyxl')
+residuales_e09 = pd.read_excel(os.path.join(dirname,"bd_residuales_esc/e09/bd_residuales_grupos_v1.xlsx"),engine='openpyxl')
+residuales_e10 = pd.read_excel(os.path.join(dirname,"bd_residuales_esc/e10/bd_residuales_grupos_v1.xlsx"),engine='openpyxl')
 #data = pd.read_excel("C:/Dropbox (LANCIS)/CARPETAS_TRABAJO/apc_temeraria/politetico_divisivo/e08/bd_grupos_v1_e08_22_oct2021.xlsx",engine='openpyxl',sheet_name='sintesis_grupos')
 
 dicc_res_esc = {
